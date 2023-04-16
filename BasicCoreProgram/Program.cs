@@ -6,34 +6,36 @@ using System.Threading.Tasks;
 
 namespace BasicCoreProgram
 {
+
     internal class Program
     {
-        static bool checkYear(int year)
-        {
-            // If a year is multiple of 400, 
-            // then it is a leap year
-            if (year % 400 == 0)
-                return true;
-
-            // Else If a year is multiple of 100,
-            // then it is not a leap year
-            if (year % 100 == 0)
-                return false;
-
-            // Else If a year is multiple of 4,
-            // then it is a leap year
-            if (year % 4 == 0)
-                return true;
-            return false;
-        }
         static void Main(string[] args)
         {
-            Console.Write("Enter a year: ");
-            int input = Convert.ToInt32(Console.ReadLine());
-            Console.Write(checkYear(input) ? "Leap Year" :
-                                 "Not a Leap Year");
-            Console.ReadLine();
+            if (args.Length == 0)
+            {
+                Console.WriteLine("Please provide an argument for N.");
+                return;
+            }
 
+            int n;
+            if (!Int32.TryParse(args[0], out n))
+            {
+                Console.WriteLine("Invalid input for N. Please enter an integer between 0 and 30.");
+                return;
+            }
+
+            if (n < 0 || n > 30)
+            {
+                Console.WriteLine("N should be between 0 and 30 inclusive.");
+                return;
+            }
+
+            for (int i = 0; i <= n; i++)
+            {
+                Console.WriteLine("2^{0} = {1}", i, (int)Math.Pow(2, i));
+                Console.ReadLine();
+            }
+            Console.ReadLine();
         }
     }
 }
