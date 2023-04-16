@@ -6,27 +6,14 @@ using System.Threading.Tasks;
 
 namespace BasicCoreProgram
 {
-    class SwapNumbers
+    internal class EvenOrOddNumbers
     {
-        private int num1;
-        private int num2;
-
-        public void Swap()
+        public static string FindEvenOrOdd(int number)
         {
-            int temp = num1;
-            num1 = num2;
-            num2 = temp;
-        }
-
-        public void SetNumbers(int n1, int n2)
-        {
-            num1 = n1;
-            num2 = n2;
-        }
-
-        public void ShowNumbers()
-        {
-            Console.WriteLine($"After swapping: {num1}, {num2}");
+            if (number % 2 == 0)
+                return "Given number is even number";
+            else
+                return "Given number is odd number";
         }
     }
     internal class Program
@@ -34,16 +21,10 @@ namespace BasicCoreProgram
      
         static void Main(string[] args)
         {
-            Console.WriteLine("Enter first number: ");
-            int num1 = int.Parse(Console.ReadLine());
-
-            Console.WriteLine("Enter second number: ");
-            int num2 = int.Parse(Console.ReadLine());
-
-            SwapNumbers swap = new SwapNumbers();
-            swap.SetNumbers(num1, num2);
-            swap.Swap();
-            swap.ShowNumbers();
+            Console.WriteLine("Please enter integer number to find even or odd");
+            int input = Convert.ToInt32(Console.ReadLine());
+            string res = EvenOrOddNumbers.FindEvenOrOdd(input);
+            Console.WriteLine(res);
             Console.ReadLine();
         }
     }
