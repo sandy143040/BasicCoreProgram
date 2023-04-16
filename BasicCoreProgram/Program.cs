@@ -6,59 +6,34 @@ using System.Threading.Tasks;
 
 namespace BasicCoreProgram
 {
-    class CoinFlipper
-    {
-        private int numFlips;
-        private int numHeads;
-        private int numTails;
-
-        public CoinFlipper(int numFlips)
-        {
-            if (numFlips <= 0)
-            {
-                throw new ArgumentException("Number of flips must be a positive integer");
-            }
-            this.numFlips = numFlips;
-            this.numHeads = 0;
-            this.numTails = 0;
-        }
-
-        public void FlipCoin()
-        {
-            Random rand = new Random();
-            for (int i = 0; i < numFlips; i++)
-            {
-                if (rand.NextDouble() < 0.5)
-                {
-                    numHeads++;
-                }
-                else
-                {
-                    numTails++;
-                }
-            }
-        }
-
-        public void PrintPercentage()
-        {
-            double percentHeads = ((double)numHeads / numFlips) * 100;
-            double percentTails = ((double)numTails / numFlips) * 100;
-            Console.WriteLine("Percentage of Heads: " + percentHeads.ToString("F2") + "%");
-            Console.WriteLine("Percentage of Tails: " + percentTails.ToString("F2") + "%");
-        }
-    }
-
     internal class Program
     {
+        static bool checkYear(int year)
+        {
+            // If a year is multiple of 400, 
+            // then it is a leap year
+            if (year % 400 == 0)
+                return true;
+
+            // Else If a year is multiple of 100,
+            // then it is not a leap year
+            if (year % 100 == 0)
+                return false;
+
+            // Else If a year is multiple of 4,
+            // then it is a leap year
+            if (year % 4 == 0)
+                return true;
+            return false;
+        }
         static void Main(string[] args)
         {
-            //Console.WriteLine("Welcome to Functional Programming");
-            Console.WriteLine("Please Enter Value");
-            int numFlips = Convert.ToInt32(Console.ReadLine());
-            CoinFlipper flipper = new CoinFlipper(numFlips);
-            flipper.FlipCoin();
-            flipper.PrintPercentage();
+            Console.Write("Enter a year: ");
+            int input = Convert.ToInt32(Console.ReadLine());
+            Console.Write(checkYear(input) ? "Leap Year" :
+                                 "Not a Leap Year");
             Console.ReadLine();
+
         }
     }
 }
