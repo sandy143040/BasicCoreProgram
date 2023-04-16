@@ -9,20 +9,26 @@ namespace BasicCoreProgram
    
     internal class Program
     {
-        static void vowelOrConsonant(char x)
+        public static int GetLargest(int a, int b, int c)
         {
-            if (x == 'a' || x == 'e' || x == 'i' ||
-                              x == 'o' || x == 'u')
-                Console.WriteLine("Vowel");
+            if (a > b && a > c)
+                return a;
+            else if (b > a && b > c)
+                return b;
             else
-                Console.WriteLine("Consonant");
+                return c;
         }
-
         static void Main(string[] args)
         {
-            Console.WriteLine("Please Enter an alphabet");
-            char x = char.Parse(Console.ReadLine());
-            vowelOrConsonant(x);
+            Console.WriteLine("Enter three numbers:");
+
+            int num1 = Convert.ToInt32(Console.ReadLine());
+            int num2 = Convert.ToInt32(Console.ReadLine());
+            int num3 = Convert.ToInt32(Console.ReadLine());
+
+            int largest = GetLargest(num1, num2, num3);
+
+            Console.WriteLine("The largest number is {0}", largest);
             Console.ReadLine();
         }
     }
