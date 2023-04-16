@@ -8,28 +8,28 @@ namespace BasicCoreProgram
 {
     internal class Program
     {
-        static double nthHarmonic(int N)
+        public static void primeFactors(int n)
         {
-            // H1 = 1
-            float harmonic = 1;
-
-            // loop to apply the formula
-            // Hn = H1 + H2 + H3 ... +
-            // Hn-1 + Hn-1 + 1/n
-            for (int i = 2; i <= N; i++)
+            for (int i = 2; i * i <= n; i++)
             {
-                harmonic += (float)1 / i;
+                while (n % i == 0)
+                {
+                    Console.Write("{0} ", i);
+                    n /= i;
+                }
             }
-
-            return harmonic;
+            if (n > 1)
+            {
+                Console.Write("{0} ", n);
+            }
         }
-
         static void Main(string[] args)
         {
-            Console.WriteLine("Please Enter Value:");
-            int input = Convert.ToInt32(Console.ReadLine());
-
-            Console.Write(nthHarmonic(input));
+            Console.Write("Enter a number to find its prime factors: ");
+            int n = Convert.ToInt32(Console.ReadLine());
+            
+            primeFactors(n);
+            
             Console.ReadLine();
         }
     }
