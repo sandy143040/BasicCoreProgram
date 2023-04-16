@@ -10,6 +10,8 @@ namespace BasicCoreProgram
     {
         static void Main(string[] args)
         {
+            Console.WriteLine("Welcome to Functional Programming");
+            Console.ReadLine();
         }
     }
 }
