@@ -6,35 +6,30 @@ using System.Threading.Tasks;
 
 namespace BasicCoreProgram
 {
-
     internal class Program
     {
+        static double nthHarmonic(int N)
+        {
+            // H1 = 1
+            float harmonic = 1;
+
+            // loop to apply the formula
+            // Hn = H1 + H2 + H3 ... +
+            // Hn-1 + Hn-1 + 1/n
+            for (int i = 2; i <= N; i++)
+            {
+                harmonic += (float)1 / i;
+            }
+
+            return harmonic;
+        }
+
         static void Main(string[] args)
         {
-            if (args.Length == 0)
-            {
-                Console.WriteLine("Please provide an argument for N.");
-                return;
-            }
+            Console.WriteLine("Please Enter Value:");
+            int input = Convert.ToInt32(Console.ReadLine());
 
-            int n;
-            if (!Int32.TryParse(args[0], out n))
-            {
-                Console.WriteLine("Invalid input for N. Please enter an integer between 0 and 30.");
-                return;
-            }
-
-            if (n < 0 || n > 30)
-            {
-                Console.WriteLine("N should be between 0 and 30 inclusive.");
-                return;
-            }
-
-            for (int i = 0; i <= n; i++)
-            {
-                Console.WriteLine("2^{0} = {1}", i, (int)Math.Pow(2, i));
-                Console.ReadLine();
-            }
+            Console.Write(nthHarmonic(input));
             Console.ReadLine();
         }
     }
